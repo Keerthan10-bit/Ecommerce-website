@@ -1,0 +1,679 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.5;
+    color: #fff;
+}
+
+/* Home page container */
+.home-page {
+    width: 100%;
+    min-height: 100vh;
+    opacity: 0.88;
+    position: relative;
+    overflow-x: hidden;
+    background-color: #68767B;
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    max-width: 1262px;
+    height: 123px;
+    margin: 28px auto 0;
+    padding: 0 96px;
+    border-bottom: 1px dashed #262626;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.nav-button {
+    display: flex;
+    padding: 18px 24px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    border: 1px dashed #262626;
+    cursor: pointer;
+}
+
+.nav-button-active {
+    background-color: #1A1A1A;
+}
+
+.nav-button-text {
+    color: #FFF;
+    text-align: center;
+    font: 400 18px/150% 'Roboto Mono', monospace;
+}
+
+.nav-button-inactive {
+    color: #B3B3B2;
+}
+
+.logo-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo-svg {
+    width: 151px;
+    height: 28px;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.cart-button {
+    display: flex;
+    padding: 18px;
+    align-items: center;
+    border-radius: 12px;
+    cursor: pointer;
+    background-color: #1A1A1A;
+}
+
+.cart-button svg {
+    width: 24px;
+    height: 24px;
+}
+
+.about-button {
+    display: flex;
+    padding: 18px 30px;
+    align-items: center;
+    border-radius: 12px;
+    cursor: pointer;
+    background-color: #AE9B84;
+}
+
+.about-button-text {
+    color: #0F0F0F;
+    text-align: center;
+    font: 500 18px/150% 'Roboto Mono', monospace;
+}
+
+/* Hero Section */
+.hero-section {
+    width: 100%;
+    max-width: 1264px;
+    height: 577px;
+    margin: 59px auto 0;
+    padding: 0 95px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* Main Container */
+.main-container {
+    width: 100%;
+    max-width: 1264px;
+    margin: 45px auto 0;
+    padding: 0 95px;
+    border-radius: 20px;
+    border: 2px dashed #262626;
+    background-color: #68767B;
+}
+
+/* Collection Section */
+.collection-section {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px dashed #262626;
+    position: relative;
+}
+
+.collection-content {
+    display: flex;
+    padding: 80px 300px 80px 80px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 50px;
+    position: relative;
+}
+
+.collection-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    width: 100%;
+}
+
+.collection-heading {
+    color: #FFF;
+    text-transform: uppercase;
+    font: 500 48px 'Roboto', sans-serif;
+}
+
+.collection-paragraph {
+    color: #FFF;
+    font: 400 18px/150% 'Roboto', sans-serif;
+}
+
+.category-tabs {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.category-tab {
+    display: flex;
+    padding: 18px 24px;
+    align-items: center;
+    border-radius: 12px;
+    border: 1px dashed #333;
+    cursor: pointer;
+}
+
+.category-tab-text {
+    color: #B3B3B2;
+    text-align: center;
+    font: 400 18px/150% 'Roboto Mono', monospace;
+}
+
+.category-tab-active-text {
+    color: #0F0F0F;
+}
+
+.abstract-design {
+    position: absolute;
+    right: -254.691px;
+    bottom: -62.062px;
+    width: 425.405px;
+    height: 446px;
+    transform: rotate(20.356deg);
+    fill: #C2B4A3;
+}
+
+.abstract-design svg {
+    width: 100%;
+    height: 100%;
+    fill: #C2B4A3;
+}
+
+/* Product Grid */
+.product-grid {
+    background-color: #324856;
+}
+
+.product-row {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.product-card {
+    flex: 1;
+    border-right: 2px dashed #262626;
+}
+
+.product-card:last-child {
+    border-right: none;
+}
+
+.product-card-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.product-card-detailed {
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.product-detail-image {
+    height: 386px;
+    width: 100%;
+    border-radius: 50px 50px 0px 0px;
+    object-fit: cover;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+}
+
+.product-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.product-category {
+    display: flex;
+    padding: 10px 16px;
+    align-items: flex-start;
+    border-radius: 100px;
+    border: 1px dashed #262626;
+    background-color: #1A1A1A;
+}
+
+.product-category-text {
+    color: #B3B3B2;
+    font: 400 18px/150% 'Roboto', sans-serif;
+}
+
+.shop-button {
+    width: 160px;
+    height: 64px;
+    cursor: pointer;
+}
+
+.product-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    width: 100%;
+}
+
+.product-title {
+    color: #FFF;
+    width: 100%;
+    font: 500 24px/150% 'Roboto Mono', monospace;
+}
+
+.product-specs {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.product-spec {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.spec-label {
+    color: #81807E;
+    font: 400 18px/150% 'Roboto Mono', monospace;
+}
+
+.spec-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #4D4D4D;
+}
+
+.spec-value {
+    color: #CCC;
+    font: 500 20px/150% 'Roboto Mono', monospace;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+    width: 100%;
+    max-width: 1264px;
+    margin: 0 auto;
+    border-radius: 20px;
+    border: 2px dashed #262626;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.testimonials-header {
+    display: flex;
+    padding: 80px 300px 80px 80px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    width: 100%;
+    border-bottom: 2px dashed #262626;
+    position: relative;
+    background-color: #68767B;
+}
+
+.testimonials-heading {
+    color: #FFF;
+    text-transform: uppercase;
+    width: 100%;
+    font: 500 48px 'Roboto', sans-serif;
+}
+
+.testimonials-paragraph {
+    color: #FFF;
+    width: 100%;
+    font: 400 18px/150% 'Roboto', sans-serif;
+}
+
+.testimonials-abstract {
+    position: absolute;
+    right: -281px;
+    bottom: -59px;
+}
+
+.testimonials-abstract-image {
+    width: 1623px;
+    height: 446px;
+    fill: #C2B4A3;
+}
+
+.testimonials-carousel {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 531px;
+    overflow-x: auto;
+    position: relative;
+    background-color: #68767B;
+}
+
+.testimonial-card {
+    display: flex;
+    width: 421px;
+    height: 531px;
+    padding: 60px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    border-right: 2px dashed #262626;
+    flex-shrink: 0;
+    background-color: #324856;
+}
+
+.testimonial-card:last-child {
+    border-right: none;
+}
+
+.testimonial-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.user-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+    object-fit: cover;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    flex: 1;
+}
+
+.user-name {
+    color: #FFF;
+    width: 100%;
+    font: 500 20px/150% 'Roboto', sans-serif;
+}
+
+.user-location {
+    color: #676665;
+    width: 100%;
+    font: 400 18px/150% 'Roboto Mono', monospace;
+}
+
+.social-icon {
+    width: 34px;
+    height: 34px;
+    position: relative;
+}
+
+.social-icon svg {
+    width: 31px;
+    height: 25px;
+    position: absolute;
+    left: 2px;
+    top: 4px;
+}
+
+.rating-stars {
+    width: 141px;
+    height: 25px;
+}
+
+.testimonial-text {
+    color: #F3EBDB;
+    width: 100%;
+    font: 400 18px/150% 'Roboto', sans-serif;
+}
+
+/* Footer Section */
+.footer-section {
+    width: 100%;
+    height: 861px;
+    margin-top: 32px;
+    display: flex;
+    padding: 100px 142px 100px 100px;
+    align-items: flex-end;
+    gap: 150px;
+    border-radius: 20px;
+    position: relative;
+    background-color: #324856;
+}
+
+.footer-abstract {
+    position: absolute;
+    right: -67px;
+    top: -246px;
+    width: 623px;
+    height: 623px;
+}
+
+.footer-logo {
+    height: 146px;
+    width: 790px;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+    .navbar {
+        padding: 0 48px;
+    }
+    
+    .hero-section {
+        padding: 0 48px;
+    }
+    
+    .main-container {
+        padding: 0 48px;
+    }
+    
+    .collection-content {
+        padding: 60px 60px 60px 60px;
+    }
+    
+    .collection-heading {
+        font-size: 36px;
+    }
+    
+    .testimonials-header {
+        padding: 60px 60px 60px 60px;
+    }
+    
+    .testimonials-heading {
+        font-size: 36px;
+    }
+    
+    .testimonials-abstract {
+        right: -200px;
+    }
+    
+    .testimonials-carousel {
+        overflow-x: scroll;
+    }
+    
+    .footer-section {
+        padding: 80px 48px;
+        gap: 100px;
+    }
+}
+
+@media (max-width: 640px) {
+    .navbar {
+        padding: 0 24px;
+        height: auto;
+        min-height: 80px;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .nav-buttons {
+        order: 2;
+    }
+    
+    .nav-actions {
+        order: 3;
+    }
+    
+    .logo-container {
+        position: static;
+        transform: none;
+        order: 1;
+    }
+    
+    .hero-section {
+        padding: 0 24px;
+        height: 300px;
+        margin-top: 20px;
+    }
+    
+    .main-container {
+        padding: 0 24px;
+        margin-top: 20px;
+    }
+    
+    .collection-content {
+        padding: 40px 24px;
+    }
+    
+    .collection-heading {
+        font-size: 28px;
+    }
+    
+    .collection-paragraph {
+        font-size: 16px;
+    }
+    
+    .category-tabs {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .category-tab {
+        padding: 12px 18px;
+    }
+    
+    .abstract-design {
+        display: none;
+    }
+    
+    .product-row {
+        flex-direction: column;
+    }
+    
+    .product-card {
+        border-right: none;
+        border-bottom: 2px dashed #262626;
+    }
+    
+    .product-card:last-child {
+        border-bottom: none;
+    }
+    
+    .product-card-detailed {
+        padding: 20px;
+    }
+    
+    .product-specs {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .testimonials-header {
+        padding: 40px 24px;
+    }
+    
+    .testimonials-heading {
+        font-size: 28px;
+    }
+    
+    .testimonials-paragraph {
+        font-size: 16px;
+    }
+    
+    .testimonials-abstract {
+        display: none;
+    }
+    
+    .testimonials-section {
+        height: auto;
+    }
+    
+    .testimonials-carousel {
+        height: auto;
+        flex-direction: column;
+    }
+    
+    .testimonial-card {
+        width: 100%;
+        height: auto;
+        padding: 40px 24px;
+        border-right: none;
+        border-bottom: 2px dashed #262626;
+    }
+    
+    .testimonial-card:last-child {
+        border-bottom: none;
+    }
+    
+    .footer-section {
+        padding: 60px 24px;
+        gap: 60px;
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+    }
+}
