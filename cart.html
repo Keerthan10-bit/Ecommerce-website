@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart - StyleLoom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Roboto+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #68767B;
+      color: #FFFFFF;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1453px;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    /* Header Styles */
+    header {
+      border-bottom: 1px dashed #262626;
+      padding: 30px 0;
+      position: relative;
+      background-color: #68767B;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 0 20px;
+    }
+
+    .nav-buttons {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .nav-button {
+      padding: 18px 24px;
+      border: 1px dashed #262626;
+      border-radius: 12px;
+      background: transparent;
+      color: #B3B3B2;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 18px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .nav-button:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .logo img {
+      width: 151px;
+      height: 28px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .profile-btn {
+      width: 60px;
+      height: 60px;
+      background-color: #1A1A1A;
+      opacity: 0.75;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+    }
+
+    .about-btn {
+      padding: 18px 30px;
+      background-color: #AE9B84;
+      border-radius: 12px;
+      border: none;
+      color: #0F0F0F;
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 500;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .abstract-design {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+    }
+
+    .abstract-left {
+      left: -100px;
+      top: 53px;
+    }
+
+    .abstract-right {
+      right: -100px;
+      top: 53px;
+    }
+
+    .abstract-line {
+      stroke: #404040;
+      stroke-width: 1px;
+      stroke-dasharray: 5, 5;
+    }
+
+    /* Main Content */
+    main {
+      background: linear-gradient(to bottom, #68767B 0%, #324856 100%);
+      padding: 20px 0;
+      min-height: 485px;
+    }
+
+    .cart-container {
+      display: flex;
+      gap: 4px;
+      padding: 20px 84px;
+      max-width: 1453px;
+      margin: 0 auto;
+    }
+
+    .cart-main {
+      flex: 1;
+      max-width: 920px;
+    }
+
+    .cart-sidebar {
+      width: 360px;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 40px;
+      color: #FFFFFF;
+      margin-bottom: 20px;
+      padding: 16px;
+    }
+
+    /* Cart Table */
+    .cart-table {
+      background-color: #121417;
+      border: 1px solid #40474F;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .table-header {
+      background-color: #1C2126;
+      display: grid;
+      grid-template-columns: 86px 273px 282px 193px;
+      height: 46px;
+      align-items: center;
+    }
+
+    .table-header-cell {
+      padding: 12px 16px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: #FFFFFF;
+    }
+
+    .table-row {
+      display: grid;
+      grid-template-columns: 86px 273px 282px 193px;
+      height: 72px;
+      align-items: center;
+      border-top: 1px solid #E5E8EB;
+    }
+
+    .table-cell {
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-image {
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+      object-fit: cover;
+    }
+
+    .price-cell,
+    .quantity-cell {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 21px;
+      color: #FFFFFF;
+    }
+
+    .quantity-cell {
+      color: #A1ABB5;
+    }
+
+    .total-cell {
+      background-color: #2B3036;
+      border-radius: 12px;
+      padding: 0 16px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: #FFFFFF;
+    }
+
+    /* Subtotal */
+    .subtotal {
+      padding: 4px 16px 12px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 21px;
+      color: #A1ABB5;
+      text-align: right;
+      margin-bottom: 20px;
+    }
+
+    /* Back Button */
+    .back-button-container {
+      display: flex;
+      justify-content: flex-end;
+      padding: 12px 16px;
+    }
+
+    .back-button {
+      background-color: #ADC9EB;
+      border: none;
+      border-radius: 12px;
+      padding: 0 16px;
+      height: 40px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+      color: #121417;
+      cursor: pointer;
+    }
+
+    /* Cart Sidebar */
+    .cart-sidebar-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 40px;
+      color: #FFFFFF;
+      margin-bottom: 20px;
+      padding: 16px;
+    }
+
+    .cart-item {
+      background-color: #121417;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 0;
+    }
+
+    .cart-item-image {
+      width: 56px;
+      height: 56px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .cart-item-info {
+      flex: 1;
+    }
+
+    .cart-item-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      color: #FFFFFF;
+      margin-bottom: 4px;
+    }
+
+    .cart-item-price {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 21px;
+      color: #A1ABB5;
+    }
+
+    .cart-subtotal {
+      padding: 12px 16px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 21px;
+      color: #A1ABB5;
+      margin-bottom: 20px;
+    }
+
+    .checkout-button {
+      background-color: #ADC9EB;
+      border: none;
+      border-radius: 12px;
+      padding: 0 16px;
+      height: 40px;
+      width: 100%;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+      color: #121417;
+      cursor: pointer;
+      margin: 12px 16px;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background-color: #324856;
+      border-radius: 20px;
+      padding: 100px;
+      margin: 60px;
+      display: flex;
+      align-items: flex-end;
+      gap: 150px;
+      min-height: 346px;
+      position: relative;
+    }
+
+    .cta-content {
+      flex: 1;
+      z-index: 1;
+    }
+
+    .cta-title {
+      font-size: 48px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .cta-text {
+      font-size: 18px;
+      color: #B3B3B2;
+      margin-bottom: 30px;
+    }
+
+    .cta-button {
+      padding: 15px 30px;
+      background-color: #AE9B84;
+      color: #0F0F0F;
+      border: none;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    /* Social Media */
+    .social-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin: 40px 0;
+    }
+
+    .social-button {
+      width: 66px;
+      height: 66px;
+      background-color: #D6CDC2;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+    }
+
+    .social-button img {
+      width: 30px;
+      height: 30px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 2px dashed #262626;
+      padding: 80px 0;
+      background-color: #68767B;
+      opacity: 0.88;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 80px;
+      padding: 0 162px;
+      border-bottom: 2px dashed #262626;
+      padding-bottom: 80px;
+      margin-bottom: 50px;
+    }
+
+    .footer-section h3 {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 26px;
+      margin-bottom: 30px;
+    }
+
+    .newsletter-input {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #1A1A1A;
+      border-radius: 12px;
+      padding: 18px 24px;
+      gap: 16px;
+      width: 260px;
+    }
+
+    .newsletter-input input {
+      background: transparent;
+      border: none;
+      color: #676665;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 18px;
+      flex: 1;
+      outline: none;
+    }
+
+    .newsletter-input input::placeholder {
+      color: #676665;
+    }
+
+    .newsletter-input img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 162px;
+      gap: 60px;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .footer-links a {
+      color: #FFFFFF;
+      text-decoration: none;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 18px;
+    }
+
+    .footer-divider {
+      width: 1px;
+      height: 27px;
+      background-color: #81807E;
+    }
+
+    .copyright {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 18px;
+      color: #FFFFFF;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+      .cart-container {
+        padding: 20px 40px;
+      }
+      
+      .footer-content,
+      .footer-bottom {
+        padding: 0 80px;
+      }
+      
+      .cta-section {
+        padding: 60px;
+        gap: 80px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .cart-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .cart-sidebar {
+        width: 100%;
+      }
+      
+      .table-header,
+      .table-row {
+        grid-template-columns: 1fr;
+        height: auto;
+        gap: 10px;
+      }
+      
+      .table-header-cell,
+      .table-cell {
+        padding: 10px;
+        text-align: center;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+      }
+      
+      .cta-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .logo {
+        position: static;
+        transform: none;
+        order: -1;
+      }
+      
+      .nav-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .cart-container {
+        padding: 20px;
+      }
+      
+      .footer-content,
+      .footer-bottom {
+        padding: 0 20px;
+      }
+      
+      .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+      
+      .cta-section {
+        padding: 40px 20px;
+      }
+      
+      .abstract-design {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      .nav-button {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .header-right {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      .about-btn {
+        width: 100%;
+      }
+      
+      .social-buttons {
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+      
+      .social-button {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <nav class="navbar">
+        <div class="nav-buttons">
+          <a href="#" class="nav-button">Home</a>
+          <a href="#" class="nav-button">Products</a>
+        </div>
+        
+        <div class="logo">
+          <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-07-26/YdF19VfLdw.svg" alt="StyleLoom Logo">
+        </div>
+        
+        <div class="header-right">
+          <button class="profile-btn">
+            <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-07-26/LF2swFStjk.svg" alt="Profile" width="24" height="24">
+          </button>
+         <a href="aboutus.html">
+  <button class="nav-button">About Us</button>
+</a>
+        </div>
+      </nav>
+      
+      <div class="abstract-design abstract-left">
+        <svg width="70" height="70" viewBox="0 0 70 70">
+          <line x1="0" y1="70" x2="40" y2="70" class="abstract-line" />
+          <line x1="70" y1="0" x2="70" y2="40" class="abstract-line" />
+        </svg>
+      </div>
+      
+      <div class="abstract-design abstract-right">
+        <svg width="70" height="70" viewBox="0 0 70 70">
+          <line x1="0" y1="70" x2="40" y2="70" class="abstract-line" />
+          <line x1="70" y1="0" x2="70" y2="40" class="abstract-line" />
+        </svg>
+      </div>
+    </header>
+
+    <main>
+      <div class="cart-container">
+        <div class="cart-main">
+          <h1 class="section-title">Shopping Cart</h1>
+          
+          <div class="cart-table">
+            <div class="table-header">
+              <div class="table-header-cell">Product</div>
+              <div class="table-header-cell">Price</div>
+              <div class="table-header-cell">Quantity</div>
+              <div class="table-header-cell">Total</div>
+            </div>
+            
+            <div class="table-row">
+              <div class="table-cell">
+                <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-07-26/0OWwXUK5nA.png" alt="Product" class="product-image">
+              </div>
+              <div class="table-cell price-cell">1500</div>
+              <div class="table-cell quantity-cell">1</div>
+              <div class="table-cell">
+                <div class="total-cell">1500</div>
+              </div>
+            </div>
+            
+            <div class="table-row">
+              <div class="table-cell">
+                <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-07-26/N7LXViFAEc.png" alt="Product" class="product-image">
+              </div>
+              <div class="table-cell price-cell">50</div>
+              <div class="table-cell quantity-cell">2</div>
+              <div class="table-cell">
+                <div class="total-cell">100</div>
+              </div>
+            </div>
+            
+            <div class="table-row">
+              <div class="table-cell">
+                <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-07-26/w7deHpwLqD.png" alt="Product" class="product-image">
+              </div>
+              <div class="table-cell price-cell">120</div>
+              <div class="table-cell quantity-cell">1</div>
+              <div class="table-cell">
+                <div class="total-cell">120</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="subtotal">Subtotal: $1620</div>
+          
+          <div class="back-button-container">
+            <button class="back-button">Go Back To Home</button>
+          </div>
+        </div>
+        
+        <div class="cart-sidebar">
+          <h2 class="cart-sidebar-title">Your Cart</h2>
+          
+          <div class="cart-item">
+            <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-07-26/5tMNunQahz.png" alt="dress" class="cart-item-image">
+            <div class="cart-item-info">
+              <div class="cart-item-name">dress</div>
+              <div class="cart-item-price">$1500</div>
+            </div>
+          </div>
+          
+          <div class="cart-item">
+            <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-07-26/h9aozMeKXr.png" alt="frock" class="cart-item-image">
+            <div class="cart-item-info">
+              <div class="cart-item-name">frock</div>
+              <div class="cart-item-price">$50</div>
+            </div>
+          </div>
+          
+          <div class="cart-item">
+            <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-07-26/ytuafeoqeo.png" alt="pant" class="cart-item-image">
+            <div class="cart-item-info">
+              <div class="cart-item-name">pant</div>
+              <div class="cart-item-price">$120</div>
+            </div>
+          </div>
+          
+          <div class="cart-subtotal">Subtotal: $1620</div>
+          
+          <button class="checkout-button">Proceed to checkout</button>
+        </div>
+      </div>
+    </main>
+
+    <section class="cta-section">
+      <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-07-26/HuFWCbCyd0.svg" alt="CTA Background" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 0;">
+      <div class="cta-content">
+
+      </div>
+    </section>
+
+    <div class="social-buttons">
+      <button class="social-button">
+        <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-07-26/kmDk7gAgaK.svg" alt="Facebook">
+      </button>
+      <button class="social-button">
+        <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-07-26/Msve42SBxj.svg" alt="Twitter">
+      </button>
+      <button class="social-button">
+        <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-07-26/OzCnFanc8F.svg" alt="Instagram">
+      </button>
+      <button class="social-button">
+        <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-07-26/u5zkELCYp5.svg" alt="LinkedIn">
+      </button>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Home</h3>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Products</h3>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Subscribe to Newsletter</h3>
+          <div class="newsletter-input">
+            <input type="email" placeholder="Your Email">
+            <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-07-26/ibW69aHRHt.svg" alt="Send Icon">
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p class="copyright">© 2025 StyleLoom. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="#">Terms & Conditions</a>
+          <div class="footer-divider"></div>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
